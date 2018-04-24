@@ -53,7 +53,10 @@ c.JupyterHub.ssl_key = os.environ['SSL_KEY']
 c.JupyterHub.ssl_cert = os.environ['SSL_CERT']
 
 # Authenticate users with GitHub OAuth
-c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
+c.JupyterHub.authenticator_class = 'hashauthenticator.HashAuthenticator'
+c.HashAuthenticator.secret_key = '77487526471d036ab5027fa76e33d322a2b0e240d6e7fdcd7c7041ed90a9cb79'  # Defaults to ''
+c.HashAuthenticator.password_length = 10          # Defaults to 6
+c.HashAuthenticator.show_logins = True            # Optional, defaults to False
 #c.GitHubOAuthenticator.oauth_callback_url = os.environ['OAUTH_CALLBACK_URL']
 
 # Persist hub data on volume mounted inside container
